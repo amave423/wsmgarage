@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  /* Цвета с их вывески: чёрная табличка, розовый неон, белые буквы логотипа */
+  --color-void: #000000;
+  --color-pit: #141416;
+  --color-plate: #1f1f23;
+  --color-seam: #34343a;
+  --color-alu: #a3a4a8;
+  --color-chalk: #f3f2ef;
+  --color-neon: #e0589c;
+  --color-neon-ink: #22000f;
+
+  --font-display: var(--font-dela), system-ui, sans-serif;
+  --font-sans: var(--font-golos), system-ui, sans-serif;
+  --font-wet: var(--font-wet), var(--font-dela), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 68px;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--color-void);
+  color: var(--color-chalk);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-neon);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Неоновое свечение текста — только логотип и главный заголовок */
+.neon {
+  color: #ffe3f1;
+  text-shadow:
+    0 0 1px #fff,
+    0 0 6px var(--color-neon),
+    0 0 16px rgb(224 88 156 / 0.6),
+    0 0 30px rgb(224 88 156 / 0.35);
+}
+
+/* Вывеска «включается» один раз при загрузке — единственная фоновая анимация страницы */
+@keyframes neon-on {
+  0%, 8% { opacity: 0.15; text-shadow: none; }
+  9% { opacity: 1; }
+  11% { opacity: 0.2; text-shadow: none; }
+  14%, 100% { opacity: 1; }
+}
+.neon-on {
+  animation: neon-on 1.4s steps(1, end) 0.2s both;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .neon-on {
+    animation: none;
+  }
+}
