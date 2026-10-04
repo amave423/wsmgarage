@@ -44,11 +44,12 @@ export function Header() {
         <div className="flex items-center gap-2">
           <a
             href={business.phoneHref}
-            className="flex items-center gap-2 rounded-full border border-seam px-3 py-2 text-[15px] font-medium tabular-nums hover:border-neon md:px-4"
+            aria-label={`Позвонить: ${business.phone}`}
+            className="flex h-10 items-center gap-2 rounded-full border border-seam px-3 text-[15px] font-medium tabular-nums hover:border-neon md:px-4"
           >
             <PhoneIcon className="size-4 text-neon" />
             <span className="hidden sm:inline">{business.phone}</span>
-            <span className="sm:hidden">Позвонить</span>
+            <span className="hidden min-[370px]:inline sm:hidden">Позвонить</span>
           </a>
           <MobileMenu links={nav} />
         </div>
